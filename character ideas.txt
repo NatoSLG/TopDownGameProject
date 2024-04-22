@@ -1,0 +1,28 @@
+Melee character: higher defense in exchange with lower damage on base attack.
+		base attack is a area of effect spin that damages enemies around them
+
+player begins the game in a hub and plays as a necromacer. when interacting with a crystal in
+the center of the hub, the necromancer can "rise" character the begin the game.
+
+types of characters:
+knight-sword/shield(high defence, medium reach and attack speed)
+knight-2h sword(lower defence, larger reach and slower attack speed)
+rough-dw knives with throwing knives(medium defence, small reach with dw knives but fast attack speed)
+mage(harpie?)
+range
+
+dont starve camera?
+
+possible pickups:
+exp pickups - 
+health boosts - bacta tanks
+temp speed boosts
+
+possible abilities: acitivates by spacebar
+1. character spins a whip 360 eliminating all enimies on screen
+
+leveling up abilies:
+necromancy
+
+possible final bosses:
+ambassador(rs) type moveset with 4 kings(ds1) looks

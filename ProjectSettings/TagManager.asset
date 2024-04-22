@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Enemy
+  - Prop
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Terrain
+  - Props
+  - ChunkSpawnPoints
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Background
+    uniqueID: 83219
+    locked: 0
+  - name: Midground
+    uniqueID: 2795322917
+    locked: 0
+  - name: Foreground
+    uniqueID: 4050019699
+    locked: 0
+  - name: Legs
+    uniqueID: 459329753
+    locked: 0
+  - name: Weapon
+    uniqueID: 3294514575
+    locked: 0
+  - name: Arms
+    uniqueID: 2290077023
+    locked: 0
+  - name: Body
+    uniqueID: 1724974821
+    locked: 0
+  - name: Shield
+    uniqueID: 1088003331
+    locked: 0
+  - name: Head
+    uniqueID: 4257173679
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
