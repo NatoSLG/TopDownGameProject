@@ -137,20 +137,29 @@ public class GameManager : MonoBehaviour
 
         Destroy(textObject, duration);//destrys the text object after the duration
         textObject.transform.SetParent(instance.damageTextCanvas.transform); //parents the generated text to the canvas
+        textObject.transform.SetSiblingIndex(0); //sets objects as the first object
 
         //pan text upwards and fade away
         WaitForEndOfFrame w = new WaitForEndOfFrame();
         float t = 0;
         float yOffset = 0;
+        Vector3 lastKnownPostion = target.position;
+
         while (t < duration) 
         {
+            //break loop if rect is missing for some reason
+            if (!rect)
+            {
+                break;
+            }
+
             tmPro.color = new Color(tmPro.color.r, tmPro.color.g, tmPro.color.b, 1 - t / duration); //fade the text
 
             if (target)
             {
                 //pan text upward
                 yOffset += speed * Time.deltaTime;
-                rect.position = referenceCamera.WorldToScreenPoint(target.position + new Vector3(0, yOffset));
+                rect.position = referenceCamera.WorldToScreenPoint(lastKnownPostion + new Vector3(0, yOffset));
             }
             else
             {
@@ -247,7 +256,7 @@ public class GameManager : MonoBehaviour
         resultsScreen.SetActive(true);
     }
 
-    public void AssignChosenCharacterUI(CharacterScriptableObject chosenCharacterData)
+    public void AssignChosenCharacterUI(CharacterData chosenCharacterData)
     {
         chosenCharacterImage.sprite = chosenCharacterData.Icon;
         chosenCharacterName.text = chosenCharacterData.name;
@@ -258,7 +267,7 @@ public class GameManager : MonoBehaviour
         levelReachedDisplay.text = levelReachedData.ToString();
     }
 
-    public void AssignChosenWeaponAndPassiveItemsUI(List<Image> chosenWeaponData, List<Image> chosenPassiveItemsData)
+    public void AssignChosenWeaponAndPassiveItemsUI(List<PlayerInventoy.Slot> chosenWeaponData, List<PlayerInventoy.Slot> chosenPassiveItemsData)
     {
         //prevents null references by checking if the list is equal to their couterpart
         if (chosenWeaponData.Count != chosenWeaponsUI.Count || chosenPassiveItemsData.Count != chosenPassiveItemsUI.Count)
@@ -271,11 +280,11 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < chosenWeaponsUI.Count; i++)
         {
             //check that the sprite of the corresponding weapon is not null
-            if (chosenWeaponData[i].sprite != null) 
+            if (chosenWeaponData[i].image.sprite != null) 
             {
                 //enable the correspondings weapons and set the sprite to the corresponding weapon
                 chosenWeaponsUI[i].enabled = true;
-                chosenWeaponsUI[i].sprite = chosenWeaponData[i].sprite;
+                chosenWeaponsUI[i].sprite = chosenWeaponData[i].image.sprite;
             }
             else //disable the elements sprite if null
             {
@@ -287,11 +296,11 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < chosenPassiveItemsUI.Count; i++)
         {
             //check that the sprite of the corresponding item is not null
-            if (chosenPassiveItemsData[i].sprite != null)
+            if (chosenPassiveItemsData[i].image.sprite != null)
             {
                 //enable the correspondings item and set the sprite to the corresponding item
                 chosenPassiveItemsUI[i].enabled = true;
-                chosenPassiveItemsUI[i].sprite = chosenPassiveItemsData[i].sprite;
+                chosenPassiveItemsUI[i].sprite = chosenPassiveItemsData[i].image.sprite;
             }
             else //disable the elements sprite if null
             {

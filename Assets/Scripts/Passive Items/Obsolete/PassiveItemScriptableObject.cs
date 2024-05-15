@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Obsolete("Will be replaced with PassiveData Class")]
 [CreateAssetMenu(fileName = "PassiveItemScriptableObject", menuName = "ScriptableObjects/Passive Item")]//creates a submenu for ScriptableObjects/Passive Item
 public class PassiveItemScriptableObject : ScriptableObject
 {

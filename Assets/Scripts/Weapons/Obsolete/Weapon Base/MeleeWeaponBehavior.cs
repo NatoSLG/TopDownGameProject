@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Obsolete("This is being changed with the Weapon Class")]
 public class MeleeWeaponBehavior : MonoBehaviour
 {
     public WeaponScriptableObject weaponData;//references stats

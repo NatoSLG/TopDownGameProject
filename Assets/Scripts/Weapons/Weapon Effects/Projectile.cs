@@ -86,7 +86,7 @@ public class Projectile : WeaponEffect
     protected virtual void FixedUpdate()
     {
         //only drive movement ourselves if this is a kinematic. Unity does not control movement of kinematic and needs to be done by script
-        if (rb.bodyType  == RigidbodyType2D.Kinematic)
+        if (rb.bodyType == RigidbodyType2D.Kinematic)
         {
             Weapon.Stats stats = weapon.GetStats();
             transform.position += transform.right * stats.speed * Time.fixedDeltaTime;
@@ -95,7 +95,7 @@ public class Projectile : WeaponEffect
         }
     }
 
-    protected virtual void OntriggerEnter2D(Collider2D c)
+    protected virtual void OnTriggerEnter2D(Collider2D c)
     {
         EnemyStats es = c.GetComponent<EnemyStats>();
         BreakableProps p = c.GetComponent<BreakableProps>();

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//store all weapon evolution data into a single object
+//store all weapon evolution data into a single object rather than having multiple objects to store a single weapon
 
 [CreateAssetMenu(fileName = "Weapon Data", menuName = "2D Top-Down Rogue-Like/Weapon Data")]
 public class WeaponData : ItemData

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b97feeb482beaf49a463771f864d42a, type: 3}
+  m_Name: Knife Weapon
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 591482972700920661, guid: 168780acc18bdf841ba93e1194b04acb, type: 3}
+  damage: 5
+  speed: 10
+  weaponCD: 2
+  pierce: 1
+  level: 1
+  nextLevelPrefab: {fileID: 644706177743125918, guid: 9a75736dd0a6c9e408c26df5a1f88ade, type: 3}
+  name: Throwing Knife
+  description: Throws knife in the direction the player is facing
+  icon: {fileID: -1520747907, guid: 64856858101c8a14ebeb0f88c2469ac5, type: 3}

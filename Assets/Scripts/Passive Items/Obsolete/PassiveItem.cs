@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Obsolete("This is no longer in used due to the weapon revamp and updated scripts")]
 public class PassiveItem : MonoBehaviour
 {
     protected PlayerStats player;

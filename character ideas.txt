@@ -1,28 +1,39 @@
+name?: Cease
 Melee character: higher defense in exchange with lower damage on base attack.
 		base attack is a area of effect spin that damages enemies around them
 
-player begins the game in a hub and plays as a necromacer. when interacting with a crystal in
+player begins the game in a hub and plays as a necromancer. when interacting with a crystal in
 the center of the hub, the necromancer can "rise" character the begin the game.
 
 types of characters:
-knight-sword/shield(high defence, medium reach and attack speed)
-knight-2h sword(lower defence, larger reach and slower attack speed)
-rough-dw knives with throwing knives(medium defence, small reach with dw knives but fast attack speed)
-mage(harpie?)
-range
+knight-sword/shield(high defense, medium reach and attack speed)
+knight-2h sword(medium defense, larger reach and slower attack speed)
+rough-dw knives with throwing knives(medium defense, high damage, ranged character)
+mage(harpie?)(low defense, high damage, ranged character)
 
-dont starve camera?
+don't starve camera?
 
 possible pickups:
-exp pickups - 
-health boosts - bacta tanks
-temp speed boosts
+healing - bacta tanks syringe (gives small/med heal) dropped from props
+healing - bacta tank (gives high heal) dropped from props
+experience - green (normal amount)
+experience - red (high amount) low drop from elite mobs or props
+money bag(sprite) - allows evolution or leveling up
 
-possible abilities: acitivates by spacebar
-1. character spins a whip 360 eliminating all enimies on screen
+weapons:
+dynamite: projectile that explodes on random enemy on screen
+rancor: Projectile of moving explosions (auto aim)
+aura: AOE Aura weapon 
 
-leveling up abilies:
+There are more passive skill increase than there are weapons. 
+This will allow the player to rely on different stat builds based on the specific character.
+This will also make passives more important to increase the players abilities that they have.
+
+possible abilities: activates by spacebar
+1. character spins a whip 360 eliminating all enemies on screen
+
+leveling up abilities:
 necromancy
 
 possible final bosses:
-ambassador(rs) type moveset with 4 kings(ds1) looks
+ambassador(rs) type move set with 4 kings(ds1) looks
