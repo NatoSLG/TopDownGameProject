@@ -13,17 +13,17 @@ MonoBehaviour:
   m_Name: Regen
   m_EditorClassIdentifier: 
   icon: {fileID: -260563820, guid: 64856858101c8a14ebeb0f88c2469ac5, type: 3}
-  maxLevel: 2
+  maxLevel: 5
   evolutionData:
-  - name: Aura + Regen
+  - name: Soul Eater
     condition: 1
-    consumes: 0
+    consumes: 2
     evolutionLevel: 2
     catalysts:
     - itemType: {fileID: 11400000, guid: 768e0c60aee7a71479f96fc843ad5b0a, type: 2}
       level: 5
     outcome:
-      itemType: {fileID: 11400000, guid: f61d7c907198cb84abb937a613fd3872, type: 2}
+      itemType: {fileID: 11400000, guid: af44c024d9091bb4284a678b5791435c, type: 2}
       level: 1
   baseStats:
     name: Regen

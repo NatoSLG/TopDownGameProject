@@ -34,7 +34,7 @@ public class Aura : WeaponEffect
                 {
                     //reset the cooldown and deal damage
                     Weapon.Stats stats = weapon.GetStats();
-                    affectedTargets[pair.Key] = stats.cooldown;
+                    affectedTargets[pair.Key] = stats.cooldown * Owner.Stats.cooldown;
                     pair.Key.TakeDamage(GetDamage(), transform.position, stats.knockback);
                 }
             }

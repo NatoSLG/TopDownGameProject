@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0256cef1bba2d24fbbc8a09853f9625, type: 3}
+  m_Name: Wave 1 Knights
+  m_EditorClassIdentifier: 
+  possibleSpawnPrefab:
+  - {fileID: 3834343732327142096, guid: f5198ce488d9792489d7d1295ef40d78, type: 3}
+  spawnInterval: {x: 1, y: 2}
+  spawnsPerTick: {x: 4, y: 5}
+  duration: 60
+  startingCount: 0
+  totalSpawns: 25
+  exitCondition: 1
+  mustKillAll: 0
+  spawnCount: 0

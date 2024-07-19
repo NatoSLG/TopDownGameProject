@@ -7,14 +7,11 @@ using UnityEngine;
 /// </summary>
 public class Passive : Item
 {
-    public PassiveData data;
     [SerializeField] CharacterData.Stats currentBoosts;
 
     [System.Serializable]
-    public struct Modifier
+    public class Modifier : LevelData
     {
-        public string name;
-        public string description;
         public CharacterData.Stats boosts;
     }
 
@@ -44,7 +41,7 @@ public class Passive : Item
         }
 
         //add stats of the next level to weapon
-        currentBoosts += data.GetLevelData(++currentLevel).boosts;
+        currentBoosts += ((Modifier)data.GetLevelData(++currentLevel)).boosts;
         return true;
     }
 }

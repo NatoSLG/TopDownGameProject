@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44fac98d7db2e2a4c9d869f0f9242236, type: 3}
   m_Name: Red Dark Soldier
   m_EditorClassIdentifier: 
-  speed: 2
-  maxHealth: 20
-  damage: 30
+  speed: 1
+  maxHealth: 40
+  damage: 10

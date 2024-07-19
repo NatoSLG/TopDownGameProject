@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d84312723c34274fa9b5ffeddf0d2da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 1
 --- !u!114 &5146950192492842778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,7 +161,7 @@ MonoBehaviour:
   drops:
   - name: Red Health Potion
     itemPrefab: {fileID: 2304195246968403942, guid: 35d67e46969c83a4cb8e957a29158de2, type: 3}
-    dropRate: 50
+    dropRate: 25
 --- !u!114 &-674001466664634725
 MonoBehaviour:
   m_ObjectHideFlags: 0

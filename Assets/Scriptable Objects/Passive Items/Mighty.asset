@@ -13,62 +13,102 @@ MonoBehaviour:
   m_Name: Mighty
   m_EditorClassIdentifier: 
   icon: {fileID: 526192174, guid: 64856858101c8a14ebeb0f88c2469ac5, type: 3}
-  maxLevel: 2
-  evolutionData:
-  - name: Knife + Might
-    condition: 0
-    consumes: 0
-    evolutionLevel: 2
-    catalysts:
-    - itemType: {fileID: 11400000, guid: fd174969494d98d44aeee8fbdb8f1d85, type: 2}
-      level: 5
-    outcome:
-      itemType: {fileID: 11400000, guid: 00990806683a539499d12d2fe7696093, type: 2}
-      level: 1
+  maxLevel: 5
+  evolutionData: []
   baseStats:
     name: Mighty
     description: Increases the players base damage
     boosts:
       maxHealth: 0
       recovery: 0
+      armor: 0
       moveSpeed: 0
       might: 0.1
+      area: 0
       speed: 0
+      duration: 0
+      amount: 0
+      cooldown: 0
+      luck: 0
+      growth: 0
+      greed: 0
+      curse: 0
       magnet: 0
+      revival: 0
   growth:
   - name: Level 2
     description: Increases the players base damage
     boosts:
       maxHealth: 0
       recovery: 0
+      armor: 0
       moveSpeed: 0
       might: 0.1
+      area: 0
       speed: 0
+      duration: 0
+      amount: 0
+      cooldown: 0
+      luck: 0
+      growth: 0
+      greed: 0
+      curse: 0
       magnet: 0
+      revival: 0
   - name: Level 3
     description: Increases the players base damage
     boosts:
       maxHealth: 0
       recovery: 0
+      armor: 0
       moveSpeed: 0
       might: 0.1
+      area: 0
       speed: 0
+      duration: 0
+      amount: 0
+      cooldown: 0
+      luck: 0
+      growth: 0
+      greed: 0
+      curse: 0
       magnet: 0
+      revival: 0
   - name: Level 4
     description: Increases the players base damage
     boosts:
       maxHealth: 0
       recovery: 0
+      armor: 0
       moveSpeed: 0
       might: 0.1
+      area: 0
       speed: 0
+      duration: 0
+      amount: 0
+      cooldown: 0
+      luck: 0
+      growth: 0
+      greed: 0
+      curse: 0
       magnet: 0
+      revival: 0
   - name: Level 5
     description: Increases the players base damage
     boosts:
       maxHealth: 0
       recovery: 0
+      armor: 0
       moveSpeed: 0
       might: 0.1
+      area: 0
       speed: 0
+      duration: 0
+      amount: 0
+      cooldown: 0
+      luck: 0
+      growth: 0
+      greed: 0
+      curse: 0
       magnet: 0
+      revival: 0

@@ -14,8 +14,13 @@ public class WeaponData : ItemData
     public Weapon.Stats[] randomGrowth;
 
     //provides stat growth and description of the next level
-    public Weapon.Stats GetLevelData(int level)
+    public override Item.LevelData GetLevelData(int level)
     {
+        if (level <= 1)
+        {
+            return baseStats;
+        }
+
         //pick the stats from the next level
         if (level - 2 < linearGrowth.Length) 
         {

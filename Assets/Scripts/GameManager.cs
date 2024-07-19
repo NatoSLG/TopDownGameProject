@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     public GameObject pauseScreen;//game object to store the pause menu
     public GameObject resultsScreen;//game object to store the game over menu
     public GameObject levelUpScreen;//game object to store the level up menu
+    int stackedLevelUps = 0; //if player levels up multiple times at once
 
     [Header("Current Stats Display")]
     //current stat display
@@ -46,19 +47,30 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI chosenCharacterName;
     public TextMeshProUGUI levelReachedDisplay;
     public TextMeshProUGUI timeSurvivedDisplay;
-    public List<Image> chosenWeaponsUI = new List<Image>(6);
-    public List<Image> chosenPassiveItemsUI = new List<Image>(6);
 
     [Header("Stopwatch")]
     public float timeLimit; //holds time limit in seconds
     float stopwatchTime; //current elapsed time since started
     public TextMeshProUGUI stopwatchDisplay;
 
-    public bool isGameOver = false;
-
-    public bool choosingUpgrade = false; //checks if the players is in the position to choose upgrades
-
     public GameObject playerObject; //reference player game object
+
+    //maintains compatibility with other scripts
+    public bool isGameOver
+    {
+        get
+        {
+            return currentState == GameState.GameOver;
+        }
+    }
+
+    public bool choosingUpgrade
+    {
+        get
+        {
+            return currentState == GameState.LevelUp;
+        }
+    }
 
     void Awake()
     {
@@ -91,24 +103,8 @@ public class GameManager : MonoBehaviour
                 break;
 
             case GameState.GameOver:
-                if (!isGameOver)
-                {
-                    isGameOver = true;
-                    Time.timeScale = 0f;//stop the game if game over
-                    Debug.Log("GAME OVER");
-                    DisplayResults();
-                }
-                break;
             case GameState.LevelUp:
-                if (!choosingUpgrade)
-                {
-                    choosingUpgrade = true;
-                    Time.timeScale = 0f;//stop the time if in the level up screen
-                    Debug.Log("Upgrades shown");
-                    levelUpScreen.SetActive(true);
-                }
                 break;
-
             default:
                 Debug.LogWarning("STATE DOES NOT EXIST");
                 break;
@@ -194,6 +190,7 @@ public class GameManager : MonoBehaviour
     //allows control over all state changes
     public void ChangeState(GameState newState)
     {
+        previousState = currentState;
         currentState = newState;
     }
 
@@ -202,11 +199,9 @@ public class GameManager : MonoBehaviour
         //checks if the game is not already paused
         if (currentState != GameState.Paused)
         {
-            previousState = currentState;
             ChangeState(GameState.Paused);
             Time.timeScale = 0f;//stop the game
             pauseScreen.SetActive(true);//activates pause screen
-            Debug.Log("Game is paused");
         }
     }
 
@@ -217,7 +212,6 @@ public class GameManager : MonoBehaviour
             ChangeState(previousState);
             Time.timeScale = 1f;//resumes the game
             pauseScreen.SetActive(false);//deactivates pause screen
-            Debug.Log("Game is unpaused");
         }
     }
 
@@ -248,7 +242,11 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         timeSurvivedDisplay.text = stopwatchDisplay.text;
+
+        //sets game over state variables
         ChangeState(GameState.GameOver);
+        Time.timeScale = 0f; //pause game
+        DisplayResults();
     }
 
     void DisplayResults()
@@ -265,48 +263,6 @@ public class GameManager : MonoBehaviour
     public void AssignLevelReachedUI(int levelReachedData)
     {
         levelReachedDisplay.text = levelReachedData.ToString();
-    }
-
-    public void AssignChosenWeaponAndPassiveItemsUI(List<PlayerInventoy.Slot> chosenWeaponData, List<PlayerInventoy.Slot> chosenPassiveItemsData)
-    {
-        //prevents null references by checking if the list is equal to their couterpart
-        if (chosenWeaponData.Count != chosenWeaponsUI.Count || chosenPassiveItemsData.Count != chosenPassiveItemsUI.Count)
-        {
-            Debug.Log("Chosen weapons and/or passive weapons data list have different lengths");
-            return;
-        }
-
-        //assign chosen weapons data to the chosen weapons UI
-        for (int i = 0; i < chosenWeaponsUI.Count; i++)
-        {
-            //check that the sprite of the corresponding weapon is not null
-            if (chosenWeaponData[i].image.sprite != null) 
-            {
-                //enable the correspondings weapons and set the sprite to the corresponding weapon
-                chosenWeaponsUI[i].enabled = true;
-                chosenWeaponsUI[i].sprite = chosenWeaponData[i].image.sprite;
-            }
-            else //disable the elements sprite if null
-            {
-                chosenWeaponsUI[i].enabled = false;
-            }
-        }
-
-        //assign chosen passive item data to the chosen item UI
-        for (int i = 0; i < chosenPassiveItemsUI.Count; i++)
-        {
-            //check that the sprite of the corresponding item is not null
-            if (chosenPassiveItemsData[i].image.sprite != null)
-            {
-                //enable the correspondings item and set the sprite to the corresponding item
-                chosenPassiveItemsUI[i].enabled = true;
-                chosenPassiveItemsUI[i].sprite = chosenPassiveItemsData[i].image.sprite;
-            }
-            else //disable the elements sprite if null
-            {
-                chosenPassiveItemsUI[i].enabled = false;
-            }
-        }
     }
 
     void UpdateStopwatch()
@@ -337,15 +293,31 @@ public class GameManager : MonoBehaviour
     public void StartLevelUp()
     {
         ChangeState(GameState.LevelUp);
-        playerObject.SendMessage("RemoveAndApplyUpgrades");
+
+        //record level up screen if already active
+        if (levelUpScreen.activeSelf)
+        {
+            stackedLevelUps++;
+        }
+        else
+        {
+            levelUpScreen.SetActive(true);
+            Time.timeScale = 0f; //pause game
+            playerObject.SendMessage("RemoveAndApplyUpgrades");
+        }
     }
 
     //used to leave the level up screen
     public void EndLevelUp()
     {
-        choosingUpgrade = false;
         Time.timeScale = 1f; //Resumes time when leaving menu
         levelUpScreen.SetActive(false);
         ChangeState(GameState.Gameplay);
+
+        if (stackedLevelUps > 0)
+        {
+            stackedLevelUps--;
+            StartLevelUp();
+        }
     }
 }

@@ -15,15 +15,15 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: f9f2853dd1cb27544bbf2b0488058ff2, type: 3}
   maxLevel: 5
   evolutionData:
-  - name: Aura + Regen
+  - name: Soul Eater
     condition: 1
-    consumes: -1
+    consumes: 2
     evolutionLevel: 5
     catalysts:
     - itemType: {fileID: 11400000, guid: 00990806683a539499d12d2fe7696093, type: 2}
       level: 2
     outcome:
-      itemType: {fileID: 11400000, guid: f61d7c907198cb84abb937a613fd3872, type: 2}
+      itemType: {fileID: 11400000, guid: af44c024d9091bb4284a678b5791435c, type: 2}
       level: 1
   behaviour: AuraWeapon
   baseStats:

@@ -12,8 +12,7 @@ GameObject:
   - component: {fileID: 7631387003534000566}
   - component: {fileID: -1789376926665777864}
   - component: {fileID: 5528742050865276956}
-  - component: {fileID: 7109218266077853584}
-  - component: {fileID: 6013757615249659235}
+  - component: {fileID: 6110468838459004271}
   m_Layer: 0
   m_Name: Blue Gem
   m_TagString: Untagged
@@ -150,7 +149,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.328125
---- !u!114 &7109218266077853584
+--- !u!114 &6110468838459004271
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -159,23 +158,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5045887070664651732}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6288ffd9f56e4504db6f7bf206c02fdb, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f0c9f8020fc69842a96e0b5dbcbd182, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasBeenCollected: 0
-  experienceGranted: 30
---- !u!114 &6013757615249659235
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5045887070664651732}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99067f58ba36ff34ea1108a2c9830df0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  frequency: 3
-  magnitude: 0.1
-  direction: {x: 0, y: 1, z: 0}
+  lifespan: 0.5
+  bobbingAnimation:
+    frequency: 2
+    direction: {x: 0, y: 0.3}
+  experience: 2
+  health: 0

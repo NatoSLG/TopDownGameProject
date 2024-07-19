@@ -11,11 +11,10 @@ public class EnemyStats : MonoBehaviour
     [HideInInspector]
     public float currentHealth;
     [HideInInspector]
-    public float currentSpeed;
+    public float currentMoveSpeed;
     [HideInInspector]
     public float currentDamage;
 
-    public float despawnDistance = 20f;
     Transform player;
 
     [Header("Damage Feedback")]
@@ -29,10 +28,14 @@ public class EnemyStats : MonoBehaviour
     SpriteRenderer sr;
     EnemyMovement movement;
 
+    public static int count;
+
     void Awake()
     {
+        count++;
+
         currentHealth = enemyData.MaxHealth;
-        currentSpeed = enemyData.Speed;
+        currentMoveSpeed = enemyData.Speed;
         currentDamage = enemyData.Damage;
     }
 
@@ -43,16 +46,6 @@ public class EnemyStats : MonoBehaviour
         originalColor = sr.color; //get the sprites original color
         movement = GetComponent<EnemyMovement>();
     }
-
-    void Update()
-    {
-        //if the players distance is bigger than the despawn distance
-        if (Vector2.Distance(transform.position, player.position) >= despawnDistance) 
-        {
-            ReturnEnemy();
-        }
-    }
-
 
     public void TakeDamage(float damage, Vector2 sourcePosition, float knockbackForce = 5f, float knockbackDuration = 0.2f)
     {
@@ -96,6 +89,14 @@ public class EnemyStats : MonoBehaviour
     
     public void Kill()
     {
+        /*Enables drops if enemy is killed,
+         since drops are disabled by default.*/
+        DropRateManager drops = GetComponent<DropRateManager>();
+        if (drops)
+        {
+            drops.active = true;
+        }
+
         StartCoroutine(KillFade());
     }
 
@@ -131,18 +132,6 @@ public class EnemyStats : MonoBehaviour
 
     void OnDestroy()
     {
-        EnemySpawner es = FindObjectOfType<EnemySpawner>();
-
-        if (es)
-        {
-            es.OnEnemyKill();
-        }
+        count--;
     }
-
-    void ReturnEnemy()
-    {
-        EnemySpawner es = FindObjectOfType<EnemySpawner>();
-        transform.position = player.position + es.relativeSpawnPoints[Random.Range(0, es.relativeSpawnPoints.Count)].position;
-    }
-
 }

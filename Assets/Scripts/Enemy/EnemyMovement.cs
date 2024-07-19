@@ -4,21 +4,37 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    EnemyStats enemy;
-    Transform playerTransform;/*keeps track of players position*/
+    protected EnemyStats enemy;
+    protected Transform player;/*keeps track of players position*/
+    SpriteRenderer sr;
 
-    Vector2 knockbackVelocity;
-    float knockbackDuration;
+    protected Vector2 knockbackVelocity;
+    protected float knockbackDuration;
+
+    public enum OutOfFrameAction
+    {
+        none,
+        respawnAtEdge,
+        despawn
+    }
+    public OutOfFrameAction outOfFrameAction = OutOfFrameAction.respawnAtEdge;
+
+    protected bool spawnedOutOfFrame = false;
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
+        spawnedOutOfFrame = !SpawnManager.IsWithinBoundaries(transform);
         enemy = GetComponent<EnemyStats>();
-        playerTransform = FindObjectOfType<PlayerMovement>().transform;
+        sr = GetComponent<SpriteRenderer>();
+
+        //Picks a random player on the screen, instead of always picking the 1st player.
+        PlayerMovement[] allPlayers = FindObjectsOfType<PlayerMovement>();
+        player = allPlayers[Random.Range(0, allPlayers.Length)].transform;
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         //if we are being knockbacked, process the knockback
         if (knockbackDuration > 0)
@@ -28,13 +44,42 @@ public class EnemyMovement : MonoBehaviour
         }
         else
         {
-            /*moves the enemys position towards the players position constantly*/
-            transform.position = Vector2.MoveTowards(transform.position, playerTransform.transform.position, enemy.currentSpeed * Time.deltaTime);
+            Move();
+            HandleOutOfFrameAction();
+        }
+    }
+
+    //If the enemy falls outside of the frame, handle it.
+    protected virtual void HandleOutOfFrameAction()
+    {
+        //Handle the enemy when it is out of frame
+        if (!SpawnManager.IsWithinBoundaries(transform))
+        {
+            switch(outOfFrameAction)
+            {
+                case OutOfFrameAction.none: default:
+                    break;
+                case OutOfFrameAction.respawnAtEdge:
+                    //If the enemy is outside the camera frame, teleport back to the edge of the frame.
+                    transform.position = SpawnManager.GeneratePosition();
+                    break;
+                case OutOfFrameAction.despawn:
+                    //Don't destroy it if it is spawned outside the frame.
+                    if (!spawnedOutOfFrame)
+                    {
+                        Destroy(gameObject);
+                    }
+                    break;
+            }
+        }
+        else
+        {
+            spawnedOutOfFrame = false;
         }
     }
 
     //creates knockback
-    public void Knockback(Vector2 velocity, float duration)
+    public virtual void Knockback(Vector2 velocity, float duration)
     {
         //no knockback if duration if > 0
         if (knockbackDuration > 0) 
@@ -45,5 +90,22 @@ public class EnemyMovement : MonoBehaviour
         //knockback enemy
         knockbackVelocity = velocity;
         knockbackDuration = duration;   
+    }
+
+    public virtual void Move()
+    {
+        //Constantly move the enemy towards the player
+        transform.position = Vector2.MoveTowards
+            (transform.position, player.transform.position, enemy.currentMoveSpeed * Time.deltaTime);
+
+        //flip sprite to face player
+        if (transform.position.x < player.position.x)
+        {
+            sr.flipX = false; //Enemy is left of player. flips sprite to the right towards player
+        }
+        else
+        {
+            sr.flipX = true; //Enemy is right of player. flips sprite to the left towards player
+        }
     }
 }

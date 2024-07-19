@@ -12,10 +12,17 @@ public class DropRateManager : MonoBehaviour
         public float dropRate;
     }
 
+    public bool active = false;
     public List<Drops> drops;
 
     void OnDestroy()
     {
+        //prevents spawn from happening if inactive
+        if (!active)
+        {
+            return;
+        }
+
         //checks if the current scene is loaded
         if (!gameObject.scene.isLoaded)
         {

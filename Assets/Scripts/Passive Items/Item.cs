@@ -6,14 +6,31 @@ using UnityEngine;
 /// Base class for bother the Weapon and Passive Item Classes.
 /// Primarily intended to handle weapon evolution as weapon and passive items will want to be evolvable
 /// </summary>
-public class Item : MonoBehaviour
+public abstract class Item : MonoBehaviour
 {
     public int currentLevel = 1;
     public int maxLevel = 1;
 
+    [HideInInspector]
+    public ItemData data;
     protected ItemData.Evolution[] evolutionData;
     protected PlayerInventoy inventory;
     protected PlayerStats owner;
+
+    public PlayerStats Owner
+    {
+        get
+        {
+            return owner;
+        }
+    }
+
+    [System.Serializable]
+    public class LevelData
+    {
+        public string name;
+        public string description;
+    }
 
     public virtual void Initialise(ItemData data)
     {

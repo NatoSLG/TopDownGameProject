@@ -572,7 +572,7 @@ TextureImporter:
         width: 96
         height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -580,6 +580,90 @@ TextureImporter:
       bones: []
       spriteID: 3ef2e638e5b3aaf49ae4a76795c04a8d
       internalID: -1793520923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: terrain Spreadsheet_22
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcaae3f5091b16a428a6ab19e9f9af49
+      internalID: -1897505405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: terrain Spreadsheet_23
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc0acc5640ca3b9449fb0be195a5ab3f
+      internalID: 1498380704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: terrain Spreadsheet_24
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73b9a3bd4145cb54889ebad6c4ac1437
+      internalID: -747999277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: terrain Spreadsheet_25
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0449acf9c505d74791f9bfc0fc5ab75
+      internalID: -288434306
       vertices: []
       indices: 
       edges: []
@@ -610,6 +694,11 @@ TextureImporter:
       terrain Spreadsheet_2: 762126641
       terrain Spreadsheet_20: -269836891
       terrain Spreadsheet_21: -1793520923
+      terrain Spreadsheet_22: -1897505405
+      terrain Spreadsheet_23: 1498380704
+      terrain Spreadsheet_24: -747999277
+      terrain Spreadsheet_25: -288434306
+      terrain Spreadsheet_26: 1214773934
       terrain Spreadsheet_3: 275006974
       terrain Spreadsheet_4: -1492503975
       terrain Spreadsheet_5: 771962629

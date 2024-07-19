@@ -217,6 +217,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drops:
-  - name: Blue Gem
-    itemPrefab: {fileID: 5045887070664651732, guid: a40a2c9eb12ec34429ab917e1361e1b5, type: 3}
+  - name: Experience Potion
+    itemPrefab: {fileID: 4843586580710232819, guid: e24e9f22a7676fd4cab655197e0c7ebb, type: 3}
     dropRate: 100
+  - name: Large Experience Potion
+    itemPrefab: {fileID: 8968425189766455558, guid: 83773d4fbcfbb6243bbff9aba84e02f1, type: 3}
+    dropRate: 1

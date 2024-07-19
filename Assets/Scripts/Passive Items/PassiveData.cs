@@ -14,8 +14,13 @@ public class PassiveData : ItemData
     public Passive.Modifier baseStats;
     public Passive.Modifier[] growth;
 
-    public Passive.Modifier GetLevelData(int level)
+    public override Item.LevelData GetLevelData(int level)
     {
+        if (level <= 1)
+        {
+            return baseStats;
+        }
+
         //pick the stats from the next level
         if (level - 2 < growth.Length)
         {

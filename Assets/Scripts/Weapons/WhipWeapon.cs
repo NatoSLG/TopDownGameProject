@@ -13,7 +13,7 @@ public class WhipWeapon : ProjectileWeapon
         if (!currentStats.projectilePrefab)
         {
             Debug.LogWarning(string.Format("Projectile prefab has not been assigned for {0}", name));
-            currentCooldown = data.baseStats.cooldown;
+            ActivateCooldown(true);
             return false;
         }
 
@@ -46,12 +46,11 @@ public class WhipWeapon : ProjectileWeapon
         if (spawnDir < 0)
         {
             prefab.transform.localScale = new Vector3(-Mathf.Abs(prefab.transform.localScale.x), prefab.transform.localScale.y, prefab.transform.localScale.z);
-            Debug.Log(spawnDir + " | " + prefab.transform.localScale);
         }
 
         //assign the stats
         prefab.weapon = this;
-        currentCooldown = data.baseStats.cooldown;
+        ActivateCooldown(true);
         attackCount--;
 
         //determine where the next projetile should spawn
@@ -65,7 +64,7 @@ public class WhipWeapon : ProjectileWeapon
         if (attackCount > 0) 
         {
             currentAttackCount = attackCount;
-            currentAttackInterval = data.baseStats.projectileInterval;
+            currentAttackInterval = ((WeaponData)data).baseStats.projectileInterval;
         }
 
         return true;

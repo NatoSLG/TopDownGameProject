@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    float MoveSpeed;
+    public const float DEFAULT_MOVESPEED = 5f;
 
     [HideInInspector]
     public float lastHorizontalVector;
@@ -75,6 +75,11 @@ public class PlayerMovement : MonoBehaviour
 
     void Move()
     {
-        rb.velocity = new Vector2(movement.x * player.CurrentMoveSpeed, movement.y * player.CurrentMoveSpeed);
+        if (GameManager.instance.isGameOver)
+        {
+            return;
+        }
+
+        rb.velocity = movement * DEFAULT_MOVESPEED * player.Stats.moveSpeed;
     }
 }
